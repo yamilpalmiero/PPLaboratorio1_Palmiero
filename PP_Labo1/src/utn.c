@@ -158,46 +158,4 @@ int utn_getFloat(float *pResultado) {
 	}
 	return retorno;
 }
-//------------------------------------------------------------------------------------------------------------------------
-int menu() {
-	int opcion;
-
-	system("cls");
-
-	printf("\n\n***MENU PRINCIPAL***\n\n");
-	printf("1- Alta.\n");
-	printf("2- Modificar.\n");
-	printf("3- Baja.\n");
-	printf("4- Listar alumnos.\n");
-	printf("5- Listar alumnos.\n");
-	printf("6- Ordenar por carrera.\n\n");
-	printf("7- Ordenar por promedio.\n\n");
-	printf("9- Salir.\n\n");
-
-	utn_getEntero(&opcion, "Ingrese una opcion: ",
-			"Error, debe ingresar un numero entre 1 y 9", 1, 9, 2);
-
-	return opcion;
-}
-//------------------------------------------------------------------------------------------------------------------------
-int submenuInformes() {
-	int opcion;
-
-	system("cls");
-
-	printf("\n\n***MENU INFORMES***\n\n");
-	printf("1- Listar alumnos de una sola carrera.\n");
-	printf("2- Listar alumnos por promedio.\n");
-	printf("3- Listar alumnos para cada carrera.\n");
-	printf("4- Cantidad de alumnos para cada carrera.\n");
-	printf("5- Cantidad de alumnos para una carrera.\n");
-	printf("6- Carrera con mayor cantidad de alumnos.\n");
-	printf("7- Salir.\n\n");
-
-	utn_getEntero(&opcion, "Ingrese una opcion: ",
-			"Error, debe ingresar un numero entre 1 y 7", 1, 7, 2);
-
-	return opcion;
-}
-//------------------------------------------------------------------------------------------------------------------------
 

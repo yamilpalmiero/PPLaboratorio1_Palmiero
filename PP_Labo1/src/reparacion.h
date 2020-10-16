@@ -1,3 +1,4 @@
+#include "electrodomestico.h"
 #ifndef REPARACION_H_
 #define REPARACION_H_
 
@@ -40,13 +41,16 @@ int hardcodearReparaciones(eReparacion *array, int len, int cantidad);
  *
  *
  */
-void printReparacion(eReparacion reparacion);
+void printReparacion(eReparacion reparacion, eElectrodomestico *arrayElec,
+		int lenElec, eServicio *arrayServ, int lenServ);
 
 /*
  *
  *
  */
-void printReparaciones(eReparacion *array, int len);
+void printReparaciones(eReparacion *array, int len,
+		eElectrodomestico *arrayElec, int lenElec, eServicio *arrayServ,
+		int lenServ);
 
 /*
  *
@@ -79,3 +83,23 @@ int cargarIdServicioPorDescripcion(char *descripcion, eServicio *array, int len,
  *
  */
 int buscarLibre(eReparacion *array, int len, int *posicion);
+
+/*
+ *
+ *
+ */
+int addReparacion(eReparacion *arrayRepa, int lenRepa, eServicio *arrayServ,
+		int lenServ, eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc, int *contadorId);
+
+/*
+ *
+ *
+ */
+int arrayReparacionVacio(eReparacion *list, int len);
+
+/*
+ *
+ *
+ */
+int arrayServicioVacio(eServicio *list, int len);

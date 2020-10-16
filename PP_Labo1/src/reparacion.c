@@ -41,20 +41,27 @@ int hardcodearReparaciones(eReparacion *array, int len, int cantidad) {
 	return contador;
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
-void printReparacion(eReparacion reparacion) {
+void printReparacion(eReparacion reparacion, eElectrodomestico *arrayElec,
+		int lenElec, eServicio *arrayServ, int lenServ) {
 
-	printf("\nId\t\tSerie electrodomestico\t\tId servicio\t\tFecha");
 	printf("\n%d\t\t%d\t\t%d\t\t%d/%d/%d", reparacion.id,
 			reparacion.serieElectrodomestico, reparacion.idServicio,
 			reparacion.fecha.dia, reparacion.fecha.mes, reparacion.fecha.anio);
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
-void printReparaciones(eReparacion *array, int len) {
+void printReparaciones(eReparacion *array, int len,
+		eElectrodomestico *arrayElec, int lenElec, eServicio *arrayServ,
+		int lenServ) {
 	int i;
 
-	if (array != NULL && len > 0) {
+	if (array != NULL && len > 0 && arrayElec != NULL && lenElec > 0
+			&& arrayServ != NULL && lenServ > 0) {
+		printf("\nId\t\tSerie electrodomestico\t\tId servicio\t\tFecha");
 		for (i = 0; i < len; i++) {
-			printReparacion(array[i]);
+			if (array[i].isEmpty == 0) {
+				printReparacion(array[i], arrayElec, lenElec, arrayServ,
+						lenServ);
+			}
 		}
 		printf("\n");
 	}
@@ -130,7 +137,8 @@ int buscarLibre(eReparacion *array, int len, int *posicion) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
 int addReparacion(eReparacion *arrayRepa, int lenRepa, eServicio *arrayServ,
-		int lenServ, eElectrodomestico *arrayElec, int lenElec, int *contadorId) {
+		int lenServ, eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc, int *contadorId) {
 	int retorno = -1;
 	int posicion;
 
@@ -140,16 +148,53 @@ int addReparacion(eReparacion *arrayRepa, int lenRepa, eServicio *arrayServ,
 		} else {
 			(*contadorId)++;
 			arrayRepa[posicion].id = *contadorId; //El id coincide con el indice y es autoincremental
-			printElectrodomesticos(arrayElec, lenElec);
+			printElectrodomesticos(arrayElec, lenElec, arrayMarc, lenMarc);
 			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico,
 					"\nNumero de serie del electrodomestico: ", "\nError.", 0,
-					1000, 2);
+					100000, 2);
 			printServicios(arrayServ, lenServ);
 			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico,
-					"\nNumero de serie del electrodomestico: ", "\nError.", 0,
-					1000, 2);
+					"\nId del servicio: ", "\nError.", 0, 1000, 2);
+			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico, "\nDia: ",
+					"\nError.", 1, 31, 2); //dia
+			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico, "\nMes: ",
+					"\nError.", 1, 12, 2); //mes
+			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico,
+					"\nAnio: ", "\nError.", 1900, 2020, 2); //anio
+			arrayRepa[posicion].isEmpty = 0;
+
 		}
 	}
 
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+int arrayReparacionVacio(eReparacion *list, int len) {
+	int retorno = 1;
+	int i;
+
+	if (list != NULL && len >= 0) {
+		for (i = 0; i < len; i++) {
+			if (list[i].isEmpty == 0) {
+				retorno = 0;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+int arrayServicioVacio(eServicio *list, int len) {
+	int retorno = 1;
+	int i;
+
+	if (list != NULL && len >= 0) {
+		for (i = 0; i < len; i++) {
+			if (list[i].isEmpty == 0) {
+				retorno = 0;
+				break;
+			}
+		}
+	}
 	return retorno;
 }

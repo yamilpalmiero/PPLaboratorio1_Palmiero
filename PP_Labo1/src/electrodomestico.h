@@ -21,6 +21,13 @@ typedef struct {
  *
  *
  */
+int buscarLibreElectrodomestico(eElectrodomestico *array, int len,
+		int *posicion);
+
+/*
+ *
+ *
+ */
 int initElectrodomesticos(eElectrodomestico *array, int len);
 
 /*
@@ -33,13 +40,27 @@ int hardcodearElectrodomesticos(eElectrodomestico *array, int len, int cantidad)
  *
  *
  */
-void printElectrodomestico(eElectrodomestico reparacion);
+void printElectrodomestico(eElectrodomestico electrodomestico, eMarca *array,
+		int len);
 
 /*
  *
  *
  */
-void printElectrodomesticos(eElectrodomestico *array, int len);
+void printElectrodomesticos(eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc);
+
+/*
+ *
+ *
+ */
+void printMarca(eMarca marca);
+
+/*
+ *
+ *
+ */
+void printMarcas(eMarca *array, int len);
 
 /*
  *
@@ -61,3 +82,49 @@ int cargarIdMarcaPorDescripcion(char *descripcion, eMarca *array, int len,
  */
 eElectrodomestico buscarElectrodomesticoPorSerie(eElectrodomestico *array,
 		int len, int serieElectrodomestico);
+
+/*
+ *
+ *
+ */
+int addElectrodomestico(eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc);
+
+/*
+ *
+ *
+ */
+int modifyElectrodomestico(eElectrodomestico *list, int len, eMarca *arrayMarc,
+		int lenMarc);
+
+/*
+ *
+ *
+ */
+int findElectrodomesticoById(eElectrodomestico *list, int len, int id,
+		int *posicion);
+
+/*
+ *
+ *
+ */
+int arrayElectrodomesticoVacio(eElectrodomestico *list, int len);
+
+/*
+ *
+ *
+ */
+int arrayMarcaVacio(eMarca *list, int len);
+
+/*
+ *
+ *
+ */
+int removeElectrodomestico(eElectrodomestico *list, int len, eMarca *arrayMarc,
+		int lenMarc);
+
+/*
+ *
+ *
+ */
+int sortElectrodomesticos(eElectrodomestico *list, int len);

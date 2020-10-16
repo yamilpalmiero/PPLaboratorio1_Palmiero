@@ -24,7 +24,6 @@ int main(void) {
 			"Liliana", 0 }, { 1003, "Gafa", 0 }, { 1004, "Phillips", 0 } };
 	int idReparacion = 0;
 	int opcionMenu;
-	int opcionSubmenu;
 
 	if (initReparaciones(reparaciones, CANT_REPA) == 0) {
 		printf("\nEl array de reparaciones se inicializo correctamente.");
@@ -38,7 +37,6 @@ int main(void) {
 	} else {
 		printf("\nError al inicializar reparaciones.\n");
 	}
-	system("pause");
 
 	/*idReparacion = idReparacion
 	 + hardcodearReparaciones(reparaciones, CANT_REPA, 5);
@@ -48,29 +46,81 @@ int main(void) {
 
 	do {
 		utn_getEntero(&opcionMenu,
-				"\n\n***MENU PRINCIPAL***\nElija una opcion:\n\n1) Alta\n2) Modificar\n3) Baja\n4) Informar\n5) Salir\n",
-				"\nError", 1, 5, 2);
+				"\n\n***MENU PRINCIPAL***\nElija una opcion:\n\n1) Alta electrodomestico \n2) Modificar electrodomestico\n3) Baja electrodomestico\n4) Listar electrodomesticos \n5) Listar marcas\n6) Listar servicios\n7) Alta reparacion\n8) Listar reparaciones\n9) Salir\n",
+				"\nError", 1, 9, 2);
+
 		system("cls");
+
 		switch (opcionMenu) {
 		case 1:
-			//FUNCION ADD
+			addElectrodomestico(electrodomesticos, CANT_ELEC, marcas,
+			CANT_MARC);
 			break;
 		case 2:
-			//FUNCION MODIFY
+			if (arrayElectrodomesticoVacio(electrodomesticos, CANT_ELEC)) {
+				printf("\nAun no se cargo ningun electrodomestico.\n\n");
+				system("pause");
+			} else {
+				modifyElectrodomestico(electrodomesticos, CANT_ELEC, marcas,
+				CANT_MARC);
+			}
 			break;
 		case 3:
-			//FUNCION REMOVE
+			if (arrayElectrodomesticoVacio(electrodomesticos, CANT_ELEC)) {
+				printf("\nAun no se cargo ningun electrodomestico.\n\n");
+				system("pause");
+			} else {
+				removeElectrodomestico(electrodomesticos, CANT_ELEC, marcas,
+				CANT_MARC);
+			}
 			break;
 		case 4:
-			//INFORMES
+			if (arrayElectrodomesticoVacio(electrodomesticos, CANT_ELEC)) {
+				printf("\nAun no se cargo ningun electrodomestico.\n\n");
+				system("pause");
+			} else {
+				sortElectrodomesticos(electrodomesticos, CANT_ELEC);
+			}
+			printElectrodomesticos(electrodomesticos, CANT_ELEC, marcas,
+			CANT_MARC);
 			break;
 		case 5:
+			if (arrayMarcaVacio(marcas, CANT_MARC)) {
+				printf("\nAun no se cargo ninguna marca.\n\n");
+				system("pause");
+			} else {
+				printMarcas(marcas, CANT_MARC);
+			}
+			break;
+		case 6:
+			if (arrayServicioVacio(servicios, CANT_SERV)) {
+				printf("\nAun no se cargo ningun servicio.\n\n");
+				system("pause");
+			} else {
+				printServicios(servicios, CANT_SERV);
+			}
+			break;
+		case 7:
+			addReparacion(reparaciones, CANT_REPA, servicios, CANT_SERV,
+					electrodomesticos, CANT_ELEC, marcas, CANT_MARC,
+					&idReparacion);
+			break;
+		case 8:
+			if (arrayReparacionVacio(reparaciones, CANT_REPA)) {
+				printf("\nAun no se cargo ninguna reparacion.\n\n");
+				system("pause");
+			} else {
+				printReparaciones(reparaciones, CANT_REPA, electrodomesticos,
+						CANT_ELEC, servicios, CANT_SERV);
+			}
+			break;
+		case 9:
 			printf("\nSalio!\n\n");
 			system("pause");
 			break;
 		}
 
-	} while (opcionMenu != 5);
+	} while (opcionMenu != 9);
 
 	return EXIT_SUCCESS;
 }
