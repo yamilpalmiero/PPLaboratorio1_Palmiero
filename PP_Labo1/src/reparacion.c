@@ -153,14 +153,14 @@ int addReparacion(eReparacion *arrayRepa, int lenRepa, eServicio *arrayServ,
 					"\nNumero de serie del electrodomestico: ", "\nError.", 0,
 					100000, 2);
 			printServicios(arrayServ, lenServ);
-			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico,
+			utn_getEntero(&arrayRepa[posicion].idServicio,
 					"\nId del servicio: ", "\nError.", 20000, 20003, 2);
-			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico, "\nDia: ",
-					"\nError.", 1, 31, 2); //dia
-			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico, "\nMes: ",
-					"\nError.", 1, 12, 2); //mes
-			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico,
-					"\nAnio: ", "\nError.", 1900, 2020, 2); //anio
+			utn_getEntero(&arrayRepa[posicion].fecha.dia, "\nDia: ", "\nError.",
+					1, 31, 2); //dia
+			utn_getEntero(&arrayRepa[posicion].fecha.mes, "\nMes: ", "\nError.",
+					1, 12, 2); //mes
+			utn_getEntero(&arrayRepa[posicion].fecha.anio, "\nAnio: ",
+					"\nError.", 1900, 2020, 2); //anio
 			arrayRepa[posicion].isEmpty = 0;
 			printReparacion(arrayRepa[posicion], arrayElec, lenElec, arrayServ,
 					lenServ);
