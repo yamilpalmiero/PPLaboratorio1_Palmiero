@@ -162,7 +162,9 @@ int addReparacion(eReparacion *arrayRepa, int lenRepa, eServicio *arrayServ,
 			utn_getEntero(&arrayRepa[posicion].serieElectrodomestico,
 					"\nAnio: ", "\nError.", 1900, 2020, 2); //anio
 			arrayRepa[posicion].isEmpty = 0;
-
+			printReparacion(arrayRepa[posicion], arrayElec, lenElec, arrayServ,
+					lenServ);
+			retorno = 0;
 		}
 	}
 
