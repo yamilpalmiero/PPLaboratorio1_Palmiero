@@ -44,7 +44,7 @@ int hardcodearReparaciones(eReparacion *array, int len, int cantidad) {
 void printReparacion(eReparacion reparacion, eElectrodomestico *arrayElec,
 		int lenElec, eServicio *arrayServ, int lenServ) {
 
-	printf("\n%d\t\t%d\t\t%d\t\t%d/%d/%d", reparacion.id,
+	printf("\n%d\t\t\t%d\t\t\t%d\t\t\t%d/%d/%d", reparacion.id,
 			reparacion.serieElectrodomestico, reparacion.idServicio,
 			reparacion.fecha.dia, reparacion.fecha.mes, reparacion.fecha.anio);
 }
@@ -162,6 +162,7 @@ int addReparacion(eReparacion *arrayRepa, int lenRepa, eServicio *arrayServ,
 			utn_getEntero(&arrayRepa[posicion].fecha.anio, "\nAnio: ",
 					"\nError.", 1900, 2020, 2); //anio
 			arrayRepa[posicion].isEmpty = 0;
+			printf("\nId reparacion\t\tSerie electro\t\tId servicio\t\tFecha");
 			printReparacion(arrayRepa[posicion], arrayElec, lenElec, arrayServ,
 					lenServ);
 			retorno = 0;

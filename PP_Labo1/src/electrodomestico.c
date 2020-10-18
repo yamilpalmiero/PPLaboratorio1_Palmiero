@@ -76,7 +76,7 @@ void printElectrodomesticos(eElectrodomestico *arrayElec, int lenElec,
 	int i;
 
 	if (arrayElec != NULL && lenElec > 0) {
-		printf("\nId\t\tSerie\t\tId marca\tMarca\tModelo");
+		printf("\nId\t\tSerie\t\tId marca\tMarca\t\tModelo");
 		for (i = 0; i < lenElec; i++) {
 			if (arrayElec[i].isEmpty == 0) {
 				printElectrodomestico(arrayElec[i], arrayMarc, lenMarc);
@@ -321,6 +321,7 @@ int sortElectrodomesticos(eElectrodomestico *list, int len) {
 				}
 			}
 		}
+		retorno = 0;
 	}
 
 	return retorno;
