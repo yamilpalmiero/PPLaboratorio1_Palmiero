@@ -6,6 +6,7 @@
 #include "reparacion.h"
 #include "electrodomestico.h"
 #include "utn.h"
+#include "informes.h"
 
 #define CANT_REPA 3
 #define CANT_ELEC 3
@@ -24,6 +25,7 @@ int main(void) {
 			"Liliana", 0 }, { 1003, "Gafa", 0 }, { 1004, "Phillips", 0 } };
 	int idReparacion = 0;
 	int opcionMenu;
+	int opcionInformes;
 
 	if (initReparaciones(reparaciones, CANT_REPA) == 0) {
 		printf("\nEl array de reparaciones se inicializo correctamente.");
@@ -46,8 +48,8 @@ int main(void) {
 
 	do {
 		utn_getEntero(&opcionMenu,
-				"\n\n***MENU PRINCIPAL***\nElija una opcion:\n\n1) Alta electrodomestico \n2) Modificar electrodomestico\n3) Baja electrodomestico\n4) Listar electrodomesticos \n5) Listar marcas\n6) Listar servicios\n7) Alta reparacion\n8) Listar reparaciones\n9) Salir\n",
-				"\nError", 1, 9, 2);
+				"\n\n***MENU PRINCIPAL***\nElija una opcion:\n\n1) Alta electrodomestico \n2) Modificar electrodomestico\n3) Baja electrodomestico\n4) Listar electrodomesticos \n5) Listar marcas\n6) Listar servicios\n7) Alta reparacion\n8) Listar reparaciones\n9) Informes\n0) Salir\n",
+				"\nError", 0, 9, 2);
 
 		system("cls");
 
@@ -111,16 +113,61 @@ int main(void) {
 				system("pause");
 			} else {
 				printReparaciones(reparaciones, CANT_REPA, electrodomesticos,
-						CANT_ELEC, servicios, CANT_SERV);
+				CANT_ELEC, servicios, CANT_SERV);
 			}
 			break;
 		case 9:
+			do {
+				utn_getEntero(&opcionInformes,
+						"\n***MENU INFORMES***\nElija una opcion:\n\n1) Mostrar electrodomesticos por marca \n2) Mostrar la cantidad de electrodomesticos por marca\n3) ?????????????????????????\n4) Salir\n",
+						"\nError", 1, 4, 2);
+
+				system("cls");
+
+				switch (opcionInformes) {
+				case 1:
+					printElectrodomesticoPorMarca(electrodomesticos, CANT_ELEC,
+							marcas, CANT_MARC);
+					break;
+				case 2:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						contarElectrodomesticosPorMarca(electrodomesticos,
+						CANT_ELEC, marcas, CANT_MARC);
+					}
+					break;
+				case 3:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						printElectrodomesticoPorMarca(electrodomesticos,
+						CANT_ELEC, marcas, CANT_MARC);
+					}
+					printElectrodomesticos(electrodomesticos, CANT_ELEC, marcas,
+					CANT_MARC);
+					break;
+				case 4:
+					printf("\nSalio de Informes!\n\n");
+					system("pause");
+					break;
+				}
+			} while (opcionInformes != 4);
+
+			break;
+		case 0:
 			printf("\nSalio!\n\n");
 			system("pause");
 			break;
 		}
 
-	} while (opcionMenu != 9);
+	} while (opcionMenu != 0);
 
 	return EXIT_SUCCESS;
 }
