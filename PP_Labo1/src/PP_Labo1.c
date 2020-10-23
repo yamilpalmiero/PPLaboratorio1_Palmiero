@@ -262,7 +262,7 @@ int main(void) {
 								"\nAun no se cargo ningun electrodomestico.\n\n");
 						system("pause");
 					} else {
-						listarElectrodomesticosPorFechaReparaciono(reparaciones,
+						listarElectrodomesticosPorFechaReparacion(reparaciones,
 						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
 						CANT_MARC, servicios, CANT_SERV);
 					}
