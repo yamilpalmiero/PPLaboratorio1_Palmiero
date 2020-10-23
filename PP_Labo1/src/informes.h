@@ -48,3 +48,96 @@ int contarElectrodomesticosPorMarca(eElectrodomestico *arrayElec, int lenElec,
  */
 void printElectrodomesticoConMarca(eElectrodomestico electrodomestico,
 		eMarca *arrayMarc, int lenMarc);
+
+/*
+ *
+ *
+ */
+void printElectrodomesticoPorModelo(eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc, int modelo);
+
+/*
+ *
+ *
+ */
+int listarReparacionesPorElectrodomestico(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eMarca *arrayMarc,
+		int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+int cargarReparacionesPorElectrodomestico(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eServicio *arrayServ,
+		int lenServ, int serieElectro);
+
+/*
+ *
+ *
+ */
+void listarElectrodomesticosSinReparacion(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eMarca *arrayMarc,
+		int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+int cargarElectrodomesticoPorSerie(eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc, int serieElectro);
+
+/*
+ *
+ *
+ */
+int sumarReparacionesPorElectrodomestico(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eMarca *arrayMarc,
+		int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+int contadorServicios(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eMarca *arrayMarc,
+		int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+void printRecaudacionPorFecha(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eMarca *arrayMarc,
+		int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+int cargarPrecioServicioPorId(int idServicio, eServicio *array, int len,
+		int *precioServicio);
+
+/*
+ *
+ *
+ */
+int listarReparacionesPorSerieElectrodomestico(eReparacion *arrayRepa,
+		int lenRepa, eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+int sumarMantenimientos(eReparacion *arrayRepa, int lenRepa,
+		eElectrodomestico *arrayElec, int lenElec, eMarca *arrayMarc,
+		int lenMarc, eServicio *arrayServ, int lenServ);
+
+/*
+ *
+ *
+ */
+void listarElectrodomesticosPorFechaReparacion(eReparacion *arrayRepa,
+		int lenRepa, eElectrodomestico *arrayElec, int lenElec,
+		eMarca *arrayMarc, int lenMarc, eServicio *arrayServ, int lenServ);

@@ -8,8 +8,8 @@
 #include "utn.h"
 #include "informes.h"
 
-#define CANT_REPA 3
-#define CANT_ELEC 3
+#define CANT_REPA 5
+#define CANT_ELEC 5
 #define CANT_SERV 4
 #define CANT_MARC 5
 
@@ -119,15 +119,22 @@ int main(void) {
 		case 9:
 			do {
 				utn_getEntero(&opcionInformes,
-						"\n***MENU INFORMES***\nElija una opcion:\n\n1) Mostrar electrodomesticos por marca \n2) Mostrar la cantidad de electrodomesticos por marca\n3) ?????????????????????????\n4) Salir\n",
-						"\nError", 1, 4, 2);
+						"\n***MENU INFORMES***\nElija una opcion:\n\n1) Mostrar electrodomesticos del anio 2020 \n2) Mostrar electrodomesticos de una marca seleccionada\n3) Mostrar todas las reparaciones efectuadas al electrodomestico seleccionado\n4) Listar los electrodomesticos que no tuvieron reparaciones\n5) Informar importe total de las reparaciones realizadas a un electrodomestico seleccionado\n6) Mostrar el servicio mas pedido\n7) Mostrar la recaudacion en una fecha en particular\n8) Mostrar todos los electrodomesticos que realizaron una garantia y la fecha\n9) Trabajos realizados a electrodomesticos del anio 2018\n10) Facturacion total por los mantenimientos\n11) Informar la marca de electrodomesticos que efectuaron mas refacciones\n12) Listar los electrodomesticos que recibieron reparacion en una fecha determinada\n13) Salir\n",
+						"\nError", 1, 13, 2);
 
 				system("cls");
 
 				switch (opcionInformes) {
 				case 1:
-					printElectrodomesticoPorMarca(electrodomesticos, CANT_ELEC,
-							marcas, CANT_MARC);
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						printElectrodomesticoPorModelo(electrodomesticos,
+						CANT_ELEC, marcas, CANT_MARC, 2020);
+					}
 					break;
 				case 2:
 					if (arrayElectrodomesticoVacio(electrodomesticos,
@@ -136,7 +143,7 @@ int main(void) {
 								"\nAun no se cargo ningun electrodomestico.\n\n");
 						system("pause");
 					} else {
-						contarElectrodomesticosPorMarca(electrodomesticos,
+						printElectrodomesticoPorMarca(electrodomesticos,
 						CANT_ELEC, marcas, CANT_MARC);
 					}
 					break;
@@ -147,18 +154,125 @@ int main(void) {
 								"\nAun no se cargo ningun electrodomestico.\n\n");
 						system("pause");
 					} else {
-						printElectrodomesticoPorMarca(electrodomesticos,
-						CANT_ELEC, marcas, CANT_MARC);
+						listarReparacionesPorElectrodomestico(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
 					}
-					printElectrodomesticos(electrodomesticos, CANT_ELEC, marcas,
-					CANT_MARC);
 					break;
 				case 4:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						listarElectrodomesticosSinReparacion(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 5:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						sumarReparacionesPorElectrodomestico(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 6:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						contadorServicios(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 7:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						printRecaudacionPorFecha(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 8:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						listarReparacionesPorElectrodomestico(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 9:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						sumarReparacionesPorElectrodomestico(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 10:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						sumarMantenimientos(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 11:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						sumarReparacionesPorElectrodomestico(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 12:
+					if (arrayElectrodomesticoVacio(electrodomesticos,
+					CANT_ELEC)) {
+						printf(
+								"\nAun no se cargo ningun electrodomestico.\n\n");
+						system("pause");
+					} else {
+						listarElectrodomesticosPorFechaReparaciono(reparaciones,
+						CANT_REPA, electrodomesticos, CANT_ELEC, marcas,
+						CANT_MARC, servicios, CANT_SERV);
+					}
+					break;
+				case 13:
 					printf("\nSalio de Informes!\n\n");
 					system("pause");
 					break;
 				}
-			} while (opcionInformes != 4);
+			} while (opcionInformes != 13);
 
 			break;
 		case 0:
